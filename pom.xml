@@ -19,6 +19,7 @@
         <stjs.version>3.0.3</stjs.version>
 
         <game.directory>C:\Users\jonas\AppData\Local\Screeps\scripts\127_0_0_1___21025\default</game.directory>
+        <game.basepackage>org/linesofcode/jjurczok</game.basepackage>
     </properties>
 
     <dependencies>
@@ -49,8 +50,7 @@
                 </executions>
                 <configuration>
                     <includes>
-                        <include>com/nicktoony/scrAI/**</include>
-                        <include>com/nicktoony/GlobalController.*</include>
+                        <include>${game.basepackage}/screepsai/**</include>
                     </includes>
                 </configuration>
             </plugin>
@@ -111,8 +111,7 @@
                             <inputDir>${project.build.directory}/</inputDir>
                             <includes>
                                 <include>../src/main/javascript/stjs.js</include>
-                                <include>${project.build.finalName}/generated-js/com/nicktoony/scrAI/**/*.js</include>
-                                <include>${project.build.finalName}/generated-js/com/nicktoony/GlobalController.js</include>
+                                <include>${project.build.finalName}/generated-js/${game.basepackage}/screepsai/**/*.js</include>
                             </includes>
                         </aggregation>
                     </aggregations>
