@@ -1,22 +1,12 @@
-scrAI by NickToony
+screepsAI
 ===================
+
+Based on scrAI by NickToony
 
 About
 -------------
-**scrAI** is a Screeps AI written in Java. Through the use of ST-JS (http://st-js.github.io/) and some Maven magic, I can write my AI implementation in pure **Java**, compile it to **Javascript**, concatenate into one large file, and push it to Screeps using **Grunt**.
+TODO: expand
 
-By using a strongly typed and class based language, this project sets out to develop a more complex and maintainable AI.
-
-Status
----------
- - TaskManager manages a rooms current tasks, prioritising them
-	- Intelligently assigns tasks to workers by predicting the future state of the task, preventing units swarming tasks. e.g. don't assign a deposit energy task if it's expected to be filled anyway
- - EconomyAdvisor suggests units to create
-	 - Attempts to produce an idea balance of Workers to Miners
- - Optimum Miner Logic
-	 - Will determine the optimum amount of miners per source, and create specialised creeps for the task
-
-This project is a work in progress. However, the Java->Javascript works if you're interested in that.
 
 Dependencies
 ----------
@@ -27,9 +17,6 @@ The following are external dependencies you must install to get the most out of 
 
  - Maven
 	 - (optional) with M2_HOME environment variable defined
- - Screeps Grunt Task
-	 - http://support.screeps.com/hc/en-us/articles/203022512-Commiting-local-scripts-using-Grunt
-	 - requires Grunt and NPM
 
 **Provided**
 
@@ -47,27 +34,21 @@ The following are provided by the Maven pom.xml file.
 Setup
 -------------------
 
-**Adding your Screeps login**
+Be advised that this setup is intended for single player games only.
 
-The compiled code is automatically uploaded to your Screeps account. I recommend using this, as it'll handle flattening the packages for you. It also includes the custom stjs.js file.
+To run the project first navigate to the pom and replace the `game.directory` property with the
+path to your local javascript files.
 
-1. Duplicate the *Gruntfile.example.js* file to *Gruntfile.js*
-2. Replace the *email* and *password* fields with your details
-3. *Gruntfile.js* is already added to the .gitignore
+Now execute `mvn clean compile verify` to run all required steps. This command will
+* Compile your java code
+* Run the st-js javascript compiler
+* Compress all your files into one single file
+* Minify your javascript to make it run even quicker
+* Delete all existing javascript files in your game directory
+* Copy your new main.js file into the game folder.
 
-**Compiling and Deploying**
+This will replace your whole logic with the next tick.
 
-1. Build the java project.
-2. Executing the Maven task *prepare-package* will run the remaining required steps.
-
-**Tip**: You can add a new Build Configuration in Intellij for example, that runs the command line *prepare-package*. Add a "Before launch" parameter that runs "Make".
-
-The 4 steps performed by the Maven task are as follows:
-
-1. Execute ST-JS with the Javascript bridge, compiling all Java classes to Javascript.
-2. Run the maven-replacer-plugin to modify the generated Javascript to be Screeps friendly. 
-3. Run the YUI-compressor to combine all the generated javascript files into one file. **Note:** this step also includes the custom *stjs.js* found under */src/main/javascript*. This is a Screeps-friendly version of the script.
-4. Run the grunt task to upload the correct files, without directories/packages.
 
 Modifiying
 -------
