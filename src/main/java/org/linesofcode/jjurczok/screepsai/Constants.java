@@ -1,4 +1,4 @@
-package com.nicktoony.scrAI;
+package org.linesofcode.jjurczok.screepsai;
 
 import org.stjs.javascript.annotation.GlobalScope;
 

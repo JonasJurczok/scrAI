@@ -1,8 +1,8 @@
-package com.nicktoony.scrAI.planning;
+package org.linesofcode.jjurczok.screepsai.planning;
 
-import com.nicktoony.scrAI.Constants;
-import com.nicktoony.scrAI.controllers.MemoryController;
-import com.nicktoony.scrAI.controllers.RoomController;
+import org.linesofcode.jjurczok.screepsai.Constants;
+import org.linesofcode.jjurczok.screepsai.controllers.MemoryController;
+import org.linesofcode.jjurczok.screepsai.controllers.RoomController;
 import org.linesofcode.jjurczok.screeps.Flag;
 import org.linesofcode.jjurczok.screeps.RoomPosition;
 import org.linesofcode.jjurczok.screeps.Source;
@@ -21,14 +21,10 @@ import org.stjs.javascript.JSCollections;
 import org.stjs.javascript.Map;
 import org.stjs.javascript.functions.Callback1;
 
-/**
- * Created by nick on 16/08/15.
- *
- * This class takes a room with a Spawn, and plans all structures, defenses and paths
- */
 @SuppressWarnings("unchecked")
 public class RoomPlanner extends MemoryController {
 
+    private final RoomController roomController;
     private Array<Map<String, Object>> minerLocations;
     private Array<Map<String, Object>> extensionLocations;
     private Array<Map<String, Object>> upgraderLocations;
@@ -45,7 +41,8 @@ public class RoomPlanner extends MemoryController {
     private Array<RoomPosition> extensionLocationsArray;
 
     public RoomPlanner(Map<String, Object> memory, RoomController roomController) {
-        super(memory, roomController);
+        super(memory);
+        this.roomController = roomController;
     }
 
     @Override

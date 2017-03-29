@@ -51,6 +51,7 @@
                 <configuration>
                     <includes>
                         <include>${game.basepackage}/screepsai/**</include>
+                        <include>${game.basepackage}/GlobalController*</include>
                     </includes>
                 </configuration>
             </plugin>
@@ -69,7 +70,7 @@
                 </executions>
                 <configuration>
                     <includes>
-                        <include>target/**/scrAI/**/*.js</include>
+                        <include>target/**/screepsai/**/*.js</include>
                     </includes>
                     <replacements>
                         <replacement>
@@ -112,6 +113,7 @@
                             <includes>
                                 <include>../src/main/javascript/stjs.js</include>
                                 <include>${project.build.finalName}/generated-js/${game.basepackage}/screepsai/**/*.js</include>
+                                <include>${project.build.finalName}/generated-js/${game.basepackage}/GlobalController.js</include>
                             </includes>
                         </aggregation>
                     </aggregations>

@@ -1,6 +1,6 @@
-package com.nicktoony.scrAI.controllers;
+package org.linesofcode.jjurczok.screepsai.controllers;
 
-import com.nicktoony.scrAI.planning.RoomPlanner;
+import org.linesofcode.jjurczok.screepsai.planning.RoomPlanner;
 import org.linesofcode.jjurczok.screeps.Game;
 import org.linesofcode.jjurczok.screeps.Room;
 import org.stjs.javascript.JSCollections;
@@ -10,7 +10,7 @@ public class RoomController extends MemoryController {
     public Room room;
 
     public RoomController(Room room) {
-        super(room.memory, null);
+        super(room.memory);
         this.room = room;
     }
 
@@ -24,12 +24,5 @@ public class RoomController extends MemoryController {
         while (Game.cpu.getUsed() < 50) {
             roomPlanner.plan();
         }
-    }
-
-    private Map<String, Object> getMemory(String name) {
-        if (memory.$get(name) == null) {
-            memory.$put(name, JSCollections.$map());
-        }
-        return (Map<String, Object>) memory.$get(name);
     }
 }
